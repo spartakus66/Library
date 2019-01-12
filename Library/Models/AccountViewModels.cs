@@ -79,6 +79,25 @@ namespace Library.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Surname")]
+        public string Surname { get; set; }
+
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 9)]
+        [Display(Name = "Pesel")]
+        public string Pesel { get; set; }
+
+        [Required]
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
+
     }
 
     public class ResetPasswordViewModel
