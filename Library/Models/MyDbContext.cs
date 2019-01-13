@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
-namespace Biblioteka.Models
+namespace Library.Models
 {
     public class MyDbContext : DbContext
     {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Biblioteka.Models
+namespace Library.Models
 {
     public class Book
     {
         public int BookID { get; set; }
 
-        public int ISBN { get; set; }
+        public string ISBN { get; set; }
 
         public string Title { get; set; }
 
