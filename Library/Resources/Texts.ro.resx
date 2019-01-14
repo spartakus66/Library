@@ -123,6 +123,9 @@
   <data name="BackToList" xml:space="preserve">
     <value>înapoi la listă</value>
   </data>
+  <data name="Books" xml:space="preserve">
+    <value>Books</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>a lua legatura</value>
   </data>
