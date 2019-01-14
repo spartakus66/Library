@@ -383,6 +383,7 @@
     <Content Include="Views\Readers\Edit.cshtml" />
     <Content Include="Views\Readers\Index.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Books\Borrow.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

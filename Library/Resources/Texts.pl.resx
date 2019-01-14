@@ -126,6 +126,9 @@
   <data name="Books" xml:space="preserve">
     <value>Książki</value>
   </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Koszyk</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Kontakt</value>
   </data>
