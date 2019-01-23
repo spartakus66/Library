@@ -203,6 +203,7 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\BookSubjectsController.cs" />
     <Compile Include="Controllers\BorrowsController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KeyWordsController.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Models\BookKeyWord.cs" />
     <Compile Include="Models\BookSubject.cs" />
     <Compile Include="Models\Borrow.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\KeyWord.cs" />
@@ -384,6 +386,8 @@
     <Content Include="Views\Readers\Index.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
     <Content Include="Views\Books\Borrow.cshtml" />
+    <Content Include="Views\Books\BorrowAccepted.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

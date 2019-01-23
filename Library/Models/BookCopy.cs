@@ -7,6 +7,7 @@ namespace Library.Models
 {
     public class BookCopy
     {
+        #region property
         public int BookCopyID { get; set; }
 
         public int PublishYear { get; set; }
@@ -18,6 +19,7 @@ namespace Library.Models
         public int BookID { get; set; }
 
         public virtual Book Book { get; set; }
+        #endregion
 
     }
 }

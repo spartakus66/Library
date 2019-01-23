@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls.Expressions;
 using Library.Models;
 
 namespace Library.Controllers
@@ -17,7 +18,7 @@ namespace Library.Controllers
         // GET: Books
         public ActionResult Index()
         {
-            var books = db.Books.Include(b => b.Publisher);
+            var books = db.Books.Include(b => b.Publisher).OrderBy(n => n.Title);
             return View(books.ToList());
         }
 
@@ -137,7 +138,7 @@ namespace Library.Controllers
                 return HttpNotFound();
             }
             ViewBag.PublisherID = new SelectList(db.Publishers, "PublisherID", "PublisherName", book.PublisherID);
-            return View(book);
+            return View(book.BookCopies);
         }
 
         // POST: Books/Edit/5
@@ -147,6 +148,10 @@ namespace Library.Controllers
         [HttpPost]
         public ActionResult Borrow([Bind(Include = "BookID,ISBN,Title,Destription,PublisherID")] Book book)
         {
+
+            return View(book.BookCopies);
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(book).State = EntityState.Modified;
@@ -155,6 +160,52 @@ namespace Library.Controllers
             }
             ViewBag.PublisherID = new SelectList(db.Publishers, "PublisherID", "PublisherName", book.PublisherID);
             return View(book);
+        }
+        
+        public ActionResult BorrowAccepted(int? id)
+        {
+           
+            BookCopy bookCopy = db.BookCopies.Find(id);
+            if (bookCopy == null)
+            {
+                return HttpNotFound();
+            }
+            
+            addToCart(bookCopy);
+
+            return View(getCartList());
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult BorrowAccepted([Bind(Include = "BookID,ISBN,Title,Destription,PublisherID")] Book book)
+        {
+            return View(getCartList());
+        }
+
+        private List<BookCopy> getCartList()
+        {
+            Cart cart = new Cart();
+
+            if (Session["cart"] != null)
+            {
+                cart.cartList = (List<BookCopy>)Session["cart"];
+            }
+
+            return cart.cartList;
+
+        }
+
+        private void addToCart(BookCopy bookCopy)
+        {
+            List<BookCopy> listBookCopies = new List<BookCopy>();
+            if (Session["cart"] != null)
+            {
+                listBookCopies = (List<BookCopy>)Session["cart"];
+            }
+            listBookCopies.Add(bookCopy);
+            Session["cart"] = listBookCopies;
+
         }
 
 
