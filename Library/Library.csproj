@@ -257,9 +257,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\MyDB.mdf" />
+    <Content Include="App_Data\MyDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\MyDB_log.ldf">
       <DependentUpon>MyDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -388,6 +391,7 @@
     <Content Include="Views\Books\Borrow.cshtml" />
     <Content Include="Views\Books\BorrowAccepted.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Subjects\CategorisedBooks.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

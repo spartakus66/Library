@@ -115,6 +115,24 @@ namespace Library.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult CategorisedBooks(int id)
+        {
+            int subjectsID = id;
+            List<Book> bookList = new List<Book>();
+            List<BookSubject> subjects = new List<BookSubject>();
+
+            //var bkList = from b in db.Books
+            //             select new Book
+            //             {
+            //                // bookList = b.BookID.
+            //             }
+               
+
+
+            return View(bookList);
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

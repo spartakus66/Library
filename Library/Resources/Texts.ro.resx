@@ -129,6 +129,9 @@
   <data name="Cart" xml:space="preserve">
     <value>Cart</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>a lua legatura</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Details" xml:space="preserve">
     <value>Detalii</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Employee</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Eroare</value>
@@ -173,6 +179,9 @@
   </data>
   <data name="Login" xml:space="preserve">
     <value>Logare</value>
+  </data>
+  <data name="Readers" xml:space="preserve">
+    <value>Readers</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Inregistreaza-te</value>

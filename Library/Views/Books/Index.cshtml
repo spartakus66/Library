@@ -6,6 +6,19 @@
 
 <h2>Please, choose the book you are interested in.</h2>
 
+<form asp-controller="BooksController" asp-action="Search" method="get">
+    <p>
+
+
+
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+
+    </p>
+    <input type="radio" name="searchRadioButton" value="Title">Title<br />
+    <input type="radio" name="searchRadioButton" value="ISBN">ISBN<br />
+</form>
+
 <p>
     @if (User.IsInRole("Employee") || User.IsInRole("Administrator"))
     {

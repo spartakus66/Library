@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls.Expressions;
@@ -16,12 +17,26 @@ namespace Library.Controllers
         private MyDbContext db = new MyDbContext();
 
         // GET: Books
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string searchRadioButton)
         {
-            var books = db.Books.Include(b => b.Publisher).OrderBy(n => n.Title);
-            return View(books.ToList());
-        }
+            var books = db.Books.Include(b => b.Publisher).OrderBy(n => n.Title).ToList();
 
+            
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if (searchRadioButton.Equals("Title"))
+                {
+                    books = books.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper())).ToList();
+                }
+                if (searchRadioButton.Equals("ISBN"))
+                {
+                    books = books.Where(s => s.ISBN.ToUpper().Contains(searchString.ToUpper())).ToList();
+                }
+            }
+
+            return View(books);
+        }
+       
         // GET: Books/Details/5
         [Authorize]
         public ActionResult Details(int? id)
@@ -181,6 +196,18 @@ namespace Library.Controllers
         public ActionResult BorrowAccepted([Bind(Include = "BookID,ISBN,Title,Destription,PublisherID")] Book book)
         {
             return View(getCartList());
+        }
+
+        [HttpPost]
+        public string Search(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
+        }
+
+        [HttpPost]
+        public string Search(string searchString)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
         }
 
         private List<BookCopy> getCartList()

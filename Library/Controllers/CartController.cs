@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Library.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Library.Controllers
 {
@@ -20,8 +22,6 @@ namespace Library.Controllers
 
         private List<Book> getCartListWithBooks()
         {
-           // Cart cart = new Cart();
-
             List<Book> cart = new List<Book>();
 
             if (Session["cart"] != null)
@@ -30,11 +30,26 @@ namespace Library.Controllers
                 foreach (var book in list)
                 {
                     cart.Add(db.Books.Where(x => x.BookID == book.BookID).First());
-
                 }
             }
             return cart;
 
+        }
+        private List<BookCopy> getCartListWithBookCopies()
+        {
+            List<BookCopy> list = new List<BookCopy>();
+            if (Session["cart"] != null)
+            {
+                list = (List<BookCopy>)Session["cart"];
+                
+            }
+            return list;
+
+        }
+
+        public void clearCart()
+        {
+            Session["cart"] = null;
         }
         // GET: Cart/Details/5
         public ActionResult Details(int id)
@@ -102,6 +117,26 @@ namespace Library.Controllers
             Session["cart"] = cart.cartList;
 
             return RedirectToAction("Index", "Cart");
+        }
+
+        public ActionResult BorrowAll()
+        {
+            // logic to borrow all books
+            // TODO: write complete logic
+            List<BookCopy> bookList = getCartListWithBookCopies();
+            foreach (var book in bookList)
+            {
+                Borrow borrow = new Borrow();
+                borrow.BorrowDate = DateTime.Now;
+                borrow.ReturnDate = DateTime.Now.AddDays(30);
+                borrow.BookCopyID = book.BookCopyID;
+                borrow.EmployeeID = 1;
+                borrow.ReaderID = 1;
+            }
+
+            clearCart();
+
+            return RedirectToAction("Index","Home");
         }
 
         // POST: Cart/Delete/5
