@@ -13,7 +13,10 @@ namespace Library.Models
 
         public string AuthorSurname { get; set; }
 
-        public virtual ICollection<Authorship> Authorships { get; set; }
+       // public virtual ICollection<Authorship> Authorships { get; set; }
+        // public virtual ICollection<Book> Books { get; set; }
+
+
 
     }
 }
