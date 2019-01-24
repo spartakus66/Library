@@ -203,6 +203,7 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\BookSubjectsController.cs" />
     <Compile Include="Controllers\BorrowsController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KeyWordsController.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Models\BookKeyWord.cs" />
     <Compile Include="Models\BookSubject.cs" />
     <Compile Include="Models\Borrow.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\KeyWord.cs" />
@@ -255,9 +257,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\MyDB.mdf" />
+    <Content Include="App_Data\MyDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\MyDB_log.ldf">
       <DependentUpon>MyDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -383,6 +388,10 @@
     <Content Include="Views\Readers\Edit.cshtml" />
     <Content Include="Views\Readers\Index.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Books\Borrow.cshtml" />
+    <Content Include="Views\Books\BorrowAccepted.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Subjects\CategorisedBooks.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
