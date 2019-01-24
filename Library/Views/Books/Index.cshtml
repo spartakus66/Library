@@ -15,8 +15,9 @@
         <input type="submit" value="Filter" />
 
     </p>
-    <input type="radio" name="searchRadioButton" value="Title">Title<br />
-    <input type="radio" name="searchRadioButton" value="ISBN">ISBN<br />
+    <input type="radio" name="searchRadioButton" value="Title"> Title<br />
+    <input type="radio" name="searchRadioButton" value="ISBN"> ISBN<br />
+    <input type="radio" name="searchRadioButton" value="Author"> Author<br />
 </form>
 
 <p>
@@ -37,6 +38,8 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Destription)
         </th>
         <th></th>
@@ -53,6 +56,8 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Destription)

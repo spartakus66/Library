@@ -197,7 +197,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
-    <Compile Include="Controllers\AuthorshipsController.cs" />
     <Compile Include="Controllers\BookCopiesController.cs" />
     <Compile Include="Controllers\BookKeyWordsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
@@ -219,11 +218,14 @@
     <Compile Include="Migrations\201901122117521_InitialCreate.Designer.cs">
       <DependentUpon>201901122117521_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901242127428_secondMigration.cs" />
+    <Compile Include="Migrations\201901242127428_secondMigration.Designer.cs">
+      <DependentUpon>201901242127428_secondMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Author.cs" />
-    <Compile Include="Models\Authorship.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookCopy.cs" />
     <Compile Include="Models\BookKeyWord.cs" />
@@ -410,6 +412,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201901122117521_InitialCreate.resx">
       <DependentUpon>201901122117521_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901242127428_secondMigration.resx">
+      <DependentUpon>201901242127428_secondMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Texts.ro.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

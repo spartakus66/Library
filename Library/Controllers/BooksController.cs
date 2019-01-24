@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -19,9 +20,10 @@ namespace Library.Controllers
         // GET: Books
         public ActionResult Index(string searchString, string searchRadioButton)
         {
-            var books = db.Books.Include(b => b.Publisher).OrderBy(n => n.Title).ToList();
+            //var books = db.Books.Include(b => b.Author).OrderBy(n => n.Title).ToList();
 
-            
+            var books = db.Books.OrderBy(n => n.Title).ToList();
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 if (searchRadioButton.Equals("Title"))
@@ -32,11 +34,25 @@ namespace Library.Controllers
                 {
                     books = books.Where(s => s.ISBN.ToUpper().Contains(searchString.ToUpper())).ToList();
                 }
+                if (searchRadioButton.Equals("Author"))
+                {
+                   // books = books.Where(s => s.Author.AuthorName.ToUpper().Contains(searchString.ToUpper())).ToList();
+                   // var books2 = books.Where(s => s.Author.AuthorSurname.ToUpper().Contains(searchString.ToUpper())).ToList();
+                   // books.Concat(books2);
+                    var authors = db.Authors.Where(x => x.AuthorSurname.Contains(searchString.ToUpper())).ToList();
+                    List<Book> books2 = new List<Book>();
+                    foreach (var author in authors )
+                    {
+                        books2.Add(books.Where(a => a.AuthorID == author.AuthorID).First());
+                    }
+
+                    books = books2;
+                }
             }
 
             return View(books);
         }
-       
+
         // GET: Books/Details/5
         [Authorize]
         public ActionResult Details(int? id)
@@ -176,16 +192,16 @@ namespace Library.Controllers
             ViewBag.PublisherID = new SelectList(db.Publishers, "PublisherID", "PublisherName", book.PublisherID);
             return View(book);
         }
-        
+
         public ActionResult BorrowAccepted(int? id)
         {
-           
+
             BookCopy bookCopy = db.BookCopies.Find(id);
             if (bookCopy == null)
             {
                 return HttpNotFound();
             }
-            
+
             addToCart(bookCopy);
 
             return View(getCartList());

@@ -16,10 +16,12 @@ namespace Library.Models
         public string Destription { get; set; }
 
         public int PublisherID { get; set; }
+        public int AuthorID { get; set; }
+        //public virtual Author Author { get; set; }
 
         public virtual Publisher Publisher { get; set; }
 
-        public virtual ICollection<Authorship> Authorships { get; set; }
+        //public virtual ICollection<Authorship> Authorships { get; set; }
 
         public virtual ICollection<BookSubject> BookSubject { get; set; }
 
