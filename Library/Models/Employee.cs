@@ -7,6 +7,8 @@ namespace Library.Models
 {
     public class Employee
     {
+        public static string Role { get; } = "Employee";
+
         public int EmployeeID { get; set; }
 
         public string Pesel { get; set; }
@@ -20,6 +22,8 @@ namespace Library.Models
         public int Phone { get; set; }
 
         public string Email { get; set; }
+
+        public string Password { get; set; }
 
         public int AddressID { get; set; }
 

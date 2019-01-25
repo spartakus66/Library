@@ -15,6 +15,7 @@ namespace Library.Models
 
         public DbSet<Author> Authors { get; set; }
 
+        public DbSet<Admin> Administrators { get; set; }
 
         public DbSet<Book> Books { get; set; }
 
