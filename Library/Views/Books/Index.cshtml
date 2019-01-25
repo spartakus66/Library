@@ -20,7 +20,7 @@
     <input type="radio" name="searchRadioButton" value="Author"> Author<br />
 </form>
 
-<p>
+<p> @*//@Model.ROle =="Employee" ||*@
     @if (User.IsInRole("Employee") || User.IsInRole("Administrator"))
     {
         @Html.ActionLink("Create New", "Create")
